@@ -1,0 +1,405 @@
+@charset "utf-8";
+
+blockquote,body,code,dd,div,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,html,input,legend,li,ol,p,pre,td,textarea,th,ul
+	{
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	border: 0;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	vertical-align: top;
+}
+
+table td,caption,table th {
+	font-weight: normal;
+	text-align: center;
+}
+
+img {
+	border: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background: #e7e8eb;
+	font-family: '微软雅黑';
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style: none;
+	text-decoration: none;
+}
+
+.coupon_testList.gray {
+	background: #a0a0a0;
+}
+
+.coupon_shenpi.gray {
+	background: #a0a0a0;
+}
+
+.coupon_pass.gray {
+	background: #a0a0a0;
+}
+
+.coupon_top {
+	width: 100%;
+	height: 64px;
+	background: url(../images/top_bg.jpg) repeat top center;
+}
+
+.coupon1200 {
+	width: 1250px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.coupon_logo {
+	width: 302px;
+	height: 36px;
+	float: left;
+	margin-top: 20px;
+	margin-left: 50px;
+}
+.coupon_marquee{
+	width: 572px;
+	height: 36px;
+	float: right;
+	margin-top: 20px;
+	margin-right: 40px;
+	color:#fff;
+	font-size: 15px;
+}
+.coupon_top_right {
+	
+}
+
+.coupon_user {
+	font-size: 14px;
+	color: #fff;
+	float: right;
+	margin-top: 10px;
+	margin-right: 30px;
+	display: table
+}
+
+.middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.coupon_user p {
+	margin-bottom: 4px;
+}
+
+.coupon_user p span {
+	margin-left: 8px;
+}
+
+.coupon_esc {
+	width: 54px;
+	float: right;
+	font-size: 14px;
+	color: #fff;
+	margin-top: 20px;
+	background: url("../images/esc.png") no-repeat;
+	line-height: 17px;
+	text-indent: 26px;
+	cursor: pointer;
+}
+
+.coupon_esc a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.coupon_contain_new {
+	width: 1200px;
+	background: #fff;
+	margin: 0 auto;
+	overflow: hidden;
+	min-height: 520px;
+}
+
+.index_list {
+	width: 1000px;
+	float: right;
+	/*display: none;*/
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;
+}
+
+.index_list ul {
+	margin: 0;
+	padding: 0;
+	padding-top: 46px;
+	overflow: hidden;
+}
+
+.index_list li {
+	width: 220px;
+	float: left;
+	margin-left: 90px;
+	margin-bottom: 20px;
+	list-style: none;
+}
+
+.index_list li a {
+	color: #5b5b5b;
+	text-decoration: none;
+}
+
+.rule,.templateManage,.templateOperate,.recognition,.daixiugai,.hzqxiugai,.shenheguanli,.chehui,.daishenhe,.ceshi,.baimingdan,.fabu,.youhuiquan,.huodongquanweihu,.wentipaicha,.shujutongji,.huancunguanli,.jiekouguanli,.jiekoudiaoyong,.yonghu,.hezuoquanguishuqudao,.piliangfaquanguanli,.role,.authority,.factory,.mail,.removeFile
+	{
+	width: 220px;
+	height: 135px;
+	float: left;
+}
+
+.xinjian {
+	background: url('../images/xinjian.png') no-repeat;
+}
+
+.hezuoshanghu {
+	background: url('../images/shangjia.png') no-repeat;
+}
+
+.hezuoquanpinlei {
+	background: url("../images/pinlei.png") no-repeat;
+}
+
+.daitijiao {
+	background: url("../images/daitijiao.png") no-repeat;
+}
+
+.rule {
+	background: url("../images/daixiugai.png") no-repeat;
+}
+
+.hzqxiugai {
+	background: url("../images/hzqxiugai.png") no-repeat;
+}
+
+.shenheguanli {
+	background: url("../images/shenhe.png") no-repeat
+}
+
+.chehui {
+	background: url('../images/chehui.png') no-repeat;
+}
+
+.daishenhe {
+	background: url('../images/tongyongq.png') no-repeat;
+}
+
+.ceshi {
+	background: url('../images/ceshi.png') no-repeat;
+}
+
+.baimingdan {
+	background: url('../images/bmd.png') no-repeat;
+}
+
+.fabu {
+	background: url('../images/fabu.png') no-repeat;
+}
+
+.youhuiquan {
+	background: url('../images/youhuiquan.png') no-repeat;
+}
+
+.wentipaicha {
+	background: url('../images/wenti.png') no-repeat;
+}
+
+.shujutongji {
+	background: url('../images/1_16.png') no-repeat;
+}
+
+.huancunguanli {
+	background: url('../images/huancun.png') no-repeat;
+}
+
+.templateManage {
+	background: url('../images/jiekou.png') no-repeat;
+}
+
+.templateOperate{
+	background: url('../images/weihuquan.png') no-repeat;
+}
+
+.recognition {
+	background: url('../images/tiaoshi.png') no-repeat;
+}
+
+.yonghu {
+	background: url('../images/user.jpg') no-repeat;
+}
+.role {
+	background: url('../images/role.jpg') no-repeat;
+}
+.authority {
+	background: url('../images/Authority.jpg') no-repeat;
+}
+.factory {
+	background: url('../images/factory.jpg') no-repeat;
+}
+.mail {
+	background: url('../images/mail.jpg') no-repeat;
+}
+.removeFile {
+	background: url('../images/removeFile.jpg') no-repeat;
+}
+
+
+.hezuoquanguishuqudao {
+	background: url('../images/hezuo.png') no-repeat;
+}
+
+.piliangfaquanguanli {
+	background: url('../images/piliangfaquanguanli.png') no-repeat;
+}
+
+.text {
+	font-size: 16px;
+	text-align: center;
+	color: #5b5b5b;
+	line-height: 42px;
+}
+
+.left_index {
+	background: #d6dde6;
+	cursor: pointer;
+	color: #394b61;
+	font-size: 16px;
+	line-height: 50px;
+	text-indent: 24px;
+}
+
+.left_index img {
+	margin-right: 14px;
+	vertical-align: middle;
+}
+
+.left_index span {
+	margin-left: 16px;
+}
+
+.left_index a {
+	color: #394b61;
+	text-decoration: none;
+}
+
+.left_list {
+	width: 200px;
+	float: left;
+	position: relative;
+	background-color: rgb(57, 75, 97);
+	margin-bottom: -9999px;
+	padding-bottom: 9999px;
+}
+
+.left_list ul {
+	margin: 0;
+	padding: 0;
+}
+
+.left_list li {
+	background: #394b61;
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 16px;
+	text-indent: 24px;
+}
+
+.left_list li img {
+	vertical-align: middle;
+	margin-right: 14px;
+}
+
+.left_list li.cur {
+	background: url("../images/left_hover.jpg") no-repeat;
+}
+
+.left_list li:hover {
+	background: url("../images/left_hover.jpg") no-repeat;
+}
+
+.left_list a {
+	text-decoration: none;
+}
+
+.common_textBox {
+	width: 110px;
+	height: 157px;
+	float: right;
+	font-size: 12px;
+	color: #fff;
+	display: table;
+	*display: inline-block;
+}
+
+.common_text {
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.common_text span {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.common_text p {
+	margin-bottom: 12px;
+}
+
+.coupon_bottom {
+	width: 1200px;
+	margin: 0 auto;
+	margin-top: 15px;
+	padding-bottom: 36px;
+}
+
+.version {
+	font-size: 14px;
+	color: #333333;
+	float: left;
+}
+
+.copyright {
+	font-size: 14px;
+	color: #999;
+	float: right;
+}
+/*活动券维护*/
+.huodongshuxingpeizhi,.paixuguanli,.zhutipeizhi {
+	width: 220px;
+	height: 135px;
+	float: left;
+}
+
+.huodongshuxingpeizhi {
+	background: url("../images/huodong.png") no-repeat;
+}
+
+.paixuguanli {
+	background: url("../images/quanpaixu.png") no-repeat;
+}
+
+.zhutipeizhi {
+	background: url("../images/zhuti.png") no-repeat;
+}

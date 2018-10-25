@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TCommonRuleMapperMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TCommonRuleMapper" >
+    <result column="ruleId" property="ruleid" jdbcType="INTEGER" />
+    <result column="Acolumn" property="Acolumn" jdbcType="VARCHAR" />
+
+  </resultMap>
+ 
+  <sql id="Base_Column_List" >
+    ruleId, Acolumn
+  </sql>
+  <insert id="insert" parameterType="com.eqy.web.pojo.TCommonRuleMapper" >
+    insert into t_common_rule_mapper (ruleId, Acolumn)
+    values (#{ruleId,jdbcType=INTEGER},#{Acolumn,jdbcType=VARCHAR})
+  </insert>
+  
+  <select  id="selectByRuleID" resultType="java.lang.String" parameterType="java.lang.Integer" >
+   select Acolumn from   t_common_rule_mapper where  ruleId=#{ruleId,jdbcType=INTEGER}
+  </select>
+  
+  <delete  id="deleteAllByRuleId" parameterType="java.lang.Integer">
+  delete from  t_common_rule_mapper  where ruleId=#{ruleId,jdbcType=INTEGER}
+  
+  </delete>
+  
+  <select  id="selectByFieldNameANDTemplateID" resultType="map" parameterType="map" >
+   select r.coverType,r.flag_A,r.flag_B, r.rule_name from   t_common_rule_mapper m left join tb_common_rule r on r.id=m.ruleId
+   where  Acolumn=#{fieldName,jdbcType=VARCHAR} AND r.status = 0 AND template_id = #{id}
+  </select>
+  
+</mapper>

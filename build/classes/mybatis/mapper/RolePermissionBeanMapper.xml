@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.RolePermissionBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.RolePermissionBean" >
+    <id column="F_ID" property="fId" jdbcType="VARCHAR" />
+    <result column="F_ROLE_CODE" property="fRoleCode" jdbcType="VARCHAR" />
+    <result column="F_PERMISSION_CODE" property="fPermissionCode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    F_ID, F_ROLE_CODE, F_PERMISSION_CODE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CCS_ROLE_PERMISSION
+    where F_ID = #{fId,jdbcType=VARCHAR}
+  </select>
+  <!-- 根据角色编码查询角色拥有的所有权限的编码 -->
+  <select id="selectPermissionsByfRoleCode"  resultType="java.lang.String" parameterType="java.lang.String" >
+    select 
+    F_PERMISSION_CODE
+    from T_CCS_ROLE_PERMISSION
+    where F_ROLE_CODE = #{fRoleCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_CCS_ROLE_PERMISSION
+    where F_ID = #{fId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.eqy.web.pojo.RolePermissionBean" >
+    insert into T_CCS_ROLE_PERMISSION (F_ID, F_ROLE_CODE, F_PERMISSION_CODE
+      )
+    values (#{fId,jdbcType=VARCHAR}, #{fRoleCode,jdbcType=VARCHAR}, #{fPermissionCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.RolePermissionBean" >
+    insert into T_CCS_ROLE_PERMISSION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        F_ID,
+      </if>
+      <if test="fRoleCode != null" >
+        F_ROLE_CODE,
+      </if>
+      <if test="fPermissionCode != null" >
+        F_PERMISSION_CODE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fId != null" >
+        #{fId,jdbcType=VARCHAR},
+      </if>
+      <if test="fRoleCode != null" >
+        #{fRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fPermissionCode != null" >
+        #{fPermissionCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.RolePermissionBean" >
+    update T_CCS_ROLE_PERMISSION
+    <set >
+      <if test="fRoleCode != null" >
+        F_ROLE_CODE = #{fRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fPermissionCode != null" >
+        F_PERMISSION_CODE = #{fPermissionCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where F_ID = #{fId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eqy.web.pojo.RolePermissionBean" >
+    update T_CCS_ROLE_PERMISSION
+    set F_ROLE_CODE = #{fRoleCode,jdbcType=VARCHAR},
+      F_PERMISSION_CODE = #{fPermissionCode,jdbcType=VARCHAR}
+    where F_ID = #{fId,jdbcType=VARCHAR}
+  </update>
+</mapper>

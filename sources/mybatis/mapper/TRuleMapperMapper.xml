@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TRuleMapperMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TRuleMapper" >
+    <result column="ruleId" property="ruleid" jdbcType="INTEGER" />
+    <result column="Acolumn" property="Acolumn" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    ruleId, Acolumn
+  </sql>
+ 
+ 
+  <insert id="insert" parameterType="com.eqy.web.pojo.TRuleMapper" >
+    insert into t_rule_mapper (ruleId, Acolumn)
+    values (#{ruleid,jdbcType=INTEGER}, #{Acolumn,jdbcType=VARCHAR})
+  </insert>
+  
+  <select  id="selectByRuleID" resultType="java.lang.String" parameterType="java.lang.Integer" >
+   select Acolumn from   t_rule_mapper  where  ruleId=#{ruleId,jdbcType=INTEGER}
+  </select>
+  
+  <delete  id="deleteAllByRuleId" parameterType="java.lang.Integer">
+  delete from  t_rule_mapper  where ruleId=#{ruleId,jdbcType=INTEGER}
+  
+  </delete>
+  
+  <select  id="selectByFieldname" resultType="map" parameterType="java.lang.String" >
+   select r.coverType,r.flag_A,r.flag_B, r.rule_name from   t_rule_mapper m left join tb_rule r on r.id=m.ruleId
+   where  Acolumn=#{Acolum,jdbcType=VARCHAR} AND r.status = 0
+  </select>
+  
+</mapper>

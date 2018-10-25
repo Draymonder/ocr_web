@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TbCommonDataMarkMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TbCommonDataMark" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="data_id" property="dataId" jdbcType="INTEGER" />
+    <result column="fieldName" property="fieldname" jdbcType="VARCHAR" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, data_id, fieldName, description, flag
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_common_data_mark
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_common_data_mark
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+ 
+ 
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.TbCommonDataMark" >
+    insert into tb_common_data_mark
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dataId != null" >
+        data_id,
+      </if>
+      <if test="fieldname != null" >
+        fieldName,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="flag != null" >
+        flag,
+    </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dataId != null" >
+        #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldname != null" >
+        #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="countDataMark" parameterType="int" resultType="int">
+    SELECT COUNT(*) FROM tb_common_data_mark
+    WHERE data_id = #{id}
+  </select>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.TbCommonDataMark" >
+    update tb_common_data_mark
+    <set >
+      <if test="dataId != null" >
+        data_id = #{dataId,jdbcType=INTEGER},
+      </if>
+      <if test="fieldname != null" >
+        fieldName = #{fieldname,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findDescription" resultType="String" parameterType="map" >
+    select 
+    description
+    from tb_common_data_mark
+    where data_id = #{id,jdbcType=INTEGER} and fieldName= #{fieldName,jdbcType=VARCHAR}
+  </select>
+   <select id="findflag" resultType="String" parameterType="map" >
+    select 
+    flag
+    from tb_common_data_mark
+    where data_id = #{id,jdbcType=INTEGER} and fieldName= #{fieldName,jdbcType=VARCHAR}
+  </select>
+  <select id="countByDataId" resultType="int">
+    SELECT COUNT(*) FROM tb_common_data_mark
+    WHERE data_id = #{data_id} AND flag = 1
+  </select>
+
+  <select id="deleteDataMark" parameterType="int">
+    DELETE FROM tb_common_data_mark
+    WHERE data_id = #{data_id}
+  </select>
+</mapper>

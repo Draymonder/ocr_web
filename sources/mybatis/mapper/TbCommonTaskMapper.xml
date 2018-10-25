@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TbCommonTaskMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TbCommonTask" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="task_number" property="taskNumber" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="factoryId" property="factoryId" jdbcType="INTEGER" />
+    <result column="finish_time" property="finishTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    t.id, t.task_number, t.creator, t.create_time, t.status, t.factoryId, t.finish_time
+  </sql>
+  <select id="countTaskBean" resultType="java.lang.Integer" parameterType="map">
+		SELECT COUNT(1) FROM tb_common_task t left join t_ngc_factory f on t.factoryId=f.id
+		<where>
+		      <if test="Authority == 0 and account_number !='' ">
+		        and  creator =#{account_number,jdbcType=VARCHAR}
+		     </if>
+		      
+		
+		      <if test="factoryName != null and factoryName !='' ">
+		        and UPPER(f.name) like  CONCAT('%', UPPER(#{factoryName,jdbcType=VARCHAR}) , '%')
+		     </if>
+		      <if test="begindate != null and begindate !='' ">
+		        and create_time  &gt;= CONCAT( #{begindate,jdbcType=VARCHAR} , ' 00:00:00')   
+		     </if>
+		      <if test="enddate!= null and enddate!='' ">
+		        and create_time   &lt;= CONCAT( #{enddate,jdbcType=VARCHAR} , ' 23:59:59')   
+		     </if>
+		
+		</where>
+	</select>
+	
+	<select id="selectTaskListByPage" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />  FROM tb_common_task  t left join t_ngc_factory f on t.factoryId=f.id
+		<where>
+		      <if test="Authority == 0 and account_number !='' ">
+		        and  creator =#{account_number,jdbcType=VARCHAR}
+		      </if>
+		      <if test="factoryName != null and factoryName !='' ">
+		        and UPPER(f.name) like  CONCAT('%', UPPER(#{factoryName,jdbcType=VARCHAR}) , '%')
+		     </if>
+		      <if test="begindate != null and begindate !='' ">
+		        and create_time  &gt;=    CONCAT( #{begindate,jdbcType=VARCHAR} , ' 00:00:00')   
+		     </if>
+		      <if test="enddate!= null and enddate!='' ">
+		        and create_time   &lt;=   CONCAT( #{enddate,jdbcType=VARCHAR} , ' 23:59:59')   
+		     </if>
+		
+		</where>
+		order  by id desc
+	    limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+	</select>
+	
+	<insert id="InsertTask" parameterType="com.eqy.web.pojo.TbCommonTask" >
+    insert into tb_common_task
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="taskNumber != null" >
+        task_number,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="factoryId != null" >
+        factoryId,
+      </if>
+      <if test="finishTime != null" >
+        finish_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="taskNumber != null" >
+        #{taskNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="factoryId != null" >
+        #{factoryId,jdbcType=INTEGER},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+      <selectKey resultType="Integer" order="AFTER" keyProperty="id">
+        SELECT LAST_INSERT_ID() AS id
+      </selectKey>
+  </insert>
+  
+
+  <update id="UpdateTaskStatusAndTime" parameterType="map">
+     update tb_common_task set status=#{status,jdbcType=VARCHAR}, finish_time=#{finishTime,jdbcType=TIMESTAMP}
+     where id=#{id,jdbcType=INTEGER}
+  </update>
+  
+
+  <select id="selectMaxID" resultType="int">
+     select max(id)  from  tb_common_task
+  </select>
+</mapper>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TNgcFactoryMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TNgcFactory" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, name, number, address
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_ngc_factory
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_ngc_factory
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+ 
+  <insert id="insert" parameterType="com.eqy.web.pojo.TNgcFactory" >
+    insert into t_ngc_factory (id, name, number, 
+      address)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{number,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.TNgcFactory" >
+    insert into t_ngc_factory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.TNgcFactory" >
+    update t_ngc_factory
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eqy.web.pojo.TNgcFactory" >
+    update t_ngc_factory
+    set name = #{name,jdbcType=VARCHAR},
+      number = #{number,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="countFactoryBean" resultType="java.lang.Integer"   >  
+    select 
+    count(1)
+    from t_ngc_factory
+  </select>
+  <select id="selectFactoryListByPage" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />  FROM t_ngc_factory 
+		 order  by  id
+		 limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}  
+  </select>
+  <select id="selectCountByID" resultType="java.lang.Integer" parameterType="map" >
+    SELECT
+		count(1)  FROM t_ngc_factory 
+		<where>
+			<if test="name != null and name != ''">
+                    AND  name= #{name,jdbcType=VARCHAR} 
+			</if>
+			<if test="number != null and number != ''">
+				
+				    AND  number= #{number,jdbcType=VARCHAR} 
+			</if>
+		</where>
+  </select>
+  
+  <select id="selectCountByIDLike" resultType="java.lang.Integer" parameterType="map">
+		SELECT COUNT(1) FROM t_ngc_factory 
+		<where>
+			<if test="number != null and number != ''">
+				
+				AND UPPER(number) LIKE CONCAT( '%', UPPER(#{number,jdbcType=VARCHAR}), '%')
+			</if>
+			<if test="name != null and name != ''">
+				AND UPPER(name) LIKE CONCAT( '%', UPPER(#{name,jdbcType=VARCHAR}), '%')
+			</if>
+		</where>
+	</select>
+    <select id="selectfactoryByConditionPage" resultMap="BaseResultMap" parameterType="map">
+	
+		SELECT
+		<include refid="Base_Column_List" />
+	
+		
+		FROM t_ngc_factory  
+		<where>
+			<if test="number != null and number != ''">
+				
+				AND UPPER(number) LIKE CONCAT( '%', UPPER(#{number,jdbcType=VARCHAR}), '%')
+			</if>
+			<if test="name != null and name != ''">
+				AND UPPER(name) LIKE CONCAT( '%', UPPER(#{name,jdbcType=VARCHAR}), '%')
+			</if>
+		</where>
+		<!--  
+		WHERE RN &gt;=
+		#{startRow,jdbcType=INTEGER}
+		AND RN &lt;=
+		#{endRow,jdbcType=INTEGER}
+		ORDER BY
+		F_ACCOUNT_NUMBER
+		DESC-->
+		 order  by  id
+		 limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}  
+
+	</select>
+	 <select id="selectAll" resultMap="BaseResultMap" >
+		SELECT <include refid="Base_Column_List" />  FROM t_ngc_factory 
+		
+	</select>  
+</mapper>

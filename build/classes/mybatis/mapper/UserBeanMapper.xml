@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.UserBeanMapper">
+	<resultMap id="BaseResultMap" type="com.eqy.web.pojo.UserBean">
+		<id column="F_ACCOUNT_NUMBER" property="fAccountNumber" jdbcType="VARCHAR" />
+		<result column="F_ACCOUNT_PASSWORD" property="fAccountPassword" jdbcType="VARCHAR" />
+		<result column="F_USER_NUMBER" property="fUserNumber" jdbcType="VARCHAR" />
+		<result column="F_CITY" property="fCity" jdbcType="VARCHAR" />
+		<result column="F_USER_LEVEL" property="fUserLevel" jdbcType="VARCHAR" />
+		<result column="F_STATE" property="fState" jdbcType="VARCHAR" />
+		<result column="F_CITY_CODE" property="fCityCode" jdbcType="VARCHAR" />
+		<result column="F_FATHER_NUMBER" property="fFatherNumber" jdbcType="VARCHAR" />
+		<result column="F_CREATE_TIME" property="fCreateTime" jdbcType="VARCHAR" />
+		<result column="T_CHANNEL_ID" property="tChannelId" jdbcType="VARCHAR" />
+		<result column="T_CHANNEL_NAME" property="channelName" jdbcType="VARCHAR" />
+		<result column="factory" property="factory" jdbcType="VARCHAR" />
+		<result column="mail" property="mail" jdbcType="VARCHAR" />
+		<result column="department" property="department" jdbcType="VARCHAR" />
+		<result column="username" property="username" jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		T.F_ACCOUNT_NUMBER, T.F_ACCOUNT_PASSWORD, T.F_USER_NUMBER, T.F_CITY, T.F_USER_LEVEL,
+		T.F_STATE,
+		T.F_CITY_CODE, T.F_FATHER_NUMBER, T.F_CREATE_TIME,
+		T.T_CHANNEL_ID,T.factory,T.mail,T.department,T.username
+	</sql>
+	<delete id="deleteUserByAccountNum" parameterType="java.lang.String">
+		delete from T_CCS_USER
+		where
+		F_ACCOUNT_NUMBER =
+		#{fAccountNumber,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insertUser" parameterType="com.eqy.web.pojo.UserBean">
+		insert into T_CCS_USER (F_ACCOUNT_NUMBER,
+		F_ACCOUNT_PASSWORD,
+		F_USER_NUMBER, F_CITY,
+		F_USER_LEVEL,
+		F_STATE, F_CITY_CODE, F_FATHER_NUMBER,
+		F_CREATE_TIME, T_COMMERCIAL_FIRST_NUM,
+		T_CHANNEL_ID,factory,mail,department,username
+		)
+		values (#{fAccountNumber,jdbcType=VARCHAR},
+		#{fAccountPassword,jdbcType=VARCHAR},
+		#{fUserNumber,jdbcType=VARCHAR}, #{fCity,jdbcType=VARCHAR},
+		#{fUserLevel,jdbcType=VARCHAR},
+		#{fState,jdbcType=VARCHAR}, #{fCityCode,jdbcType=VARCHAR},
+		#{fFatherNumber,jdbcType=VARCHAR},
+		#{fCreateTime,jdbcType=VARCHAR},
+		#{tChannelId,jdbcType=VARCHAR},
+		#{tChannelId,jdbcType=VARCHAR},
+		#{factory,jdbcType=VARCHAR},
+		#{mail,jdbcType=VARCHAR},
+		#{department,jdbcType=VARCHAR},
+		#{username,jdbcType=VARCHAR}
+		)
+	</insert>
+	<update id="updateUser" parameterType="com.eqy.web.pojo.UserBean">
+		update T_CCS_USER
+		<set>
+			<if test="fAccountPassword != null">
+				F_ACCOUNT_PASSWORD = #{fAccountPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="fUserNumber != null">
+				F_USER_NUMBER = #{fUserNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="fCity != null">
+				F_CITY = #{fCity,jdbcType=VARCHAR},
+			</if>
+			<if test="fUserLevel != null">
+				F_USER_LEVEL = #{fUserLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="fState != null">
+				F_STATE = #{fState,jdbcType=VARCHAR},
+			</if>
+			<if test="fCityCode != null">
+				F_CITY_CODE = #{fCityCode,jdbcType=VARCHAR},
+			</if>
+			<if test="fFatherNumber != null">
+				F_FATHER_NUMBER = #{fFatherNumber,jdbcType=VARCHAR},
+			</if>
+			<if test="fCreateTime != null">
+				F_CREATE_TIME = #{fCreateTime,jdbcType=VARCHAR},
+			</if>
+			<if test="tChannelId != null">
+				T_CHANNEL_ID = #{tChannelId,jdbcType=VARCHAR},
+			</if>
+			<if test="factory != null">
+				factory = #{factory,jdbcType=VARCHAR},
+			</if>
+			<if test="mail != null">
+				mail = #{mail,jdbcType=VARCHAR},
+			</if>
+			<if test="department != null">
+				department = #{department,jdbcType=VARCHAR},
+			</if>
+			<if test="username != null">
+				username = #{username,jdbcType=VARCHAR}
+			</if>
+		</set>
+		where F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+	</update>
+	<select id="selectUserByAccountNum" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from T_CCS_USER t
+		where
+		T.F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+	</select>
+	<select id="selectUserByUserNum" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		,t1.T_CHANNEL_NAME
+		from T_CCS_USER t left join T_CCS_CHANNEL t1 on t.T_CHANNEL_ID = t1.T_CHANNEL_ID
+		where
+		T.F_USER_NUMBER = #{fUserNumber,jdbcType=VARCHAR}
+	</select>
+	<select id="selectUserList" resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM T_CCS_USER T
+		where
+		T.F_USER_LEVEL = '1' or T.F_USER_LEVEL = '2'
+		ORDER BY
+		T.F_ACCOUNT_NUMBER
+		ASC
+	</select>
+	<select id="selectUserByCondition" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />
+		,t1.T_CHANNEL_NAME
+		FROM T_CCS_USER T left join T_CCS_CHANNEL t1 on T.T_CHANNEL_ID = t1.T_CHANNEL_ID
+		<where>
+			<if test="fAccountNumber != null and fAccountNumber != ''">
+				AND T.F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+			</if>
+			<if test="fUserNumber != null and fUserNumber != ''">
+				AND T.F_USER_NUMBER = #{fUserNumber,jdbcType=VARCHAR}
+			</if>
+		</where>
+	</select>
+	<select id="selectUserByConditionPage" resultMap="BaseResultMap" parameterType="map">
+	SELECT * FROM 
+		(SELECT
+		<include refid="Base_Column_List" />
+		<!--  
+		,t1.T_CHANNEL_NAME,row_number() over(ORDER BY ROWNUM ASC) RN
+		FROM T_CCS_USER T left join T_CCS_CHANNEL t1 on ( T.T_CHANNEL_ID = t1.T_CHANNEL_ID
+		)-->
+		,t1.T_CHANNEL_NAME
+		FROM T_CCS_USER T left join T_CCS_CHANNEL t1 on ( T.T_CHANNEL_ID = t1.T_CHANNEL_ID)
+		<where>
+			<if test="fAccountNumber != null and fAccountNumber != ''">
+				<!--  AND UPPER(T.F_ACCOUNT_NUMBER) LIKE '%' || UPPER(#{fAccountNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(T.F_ACCOUNT_NUMBER) LIKE CONCAT('%', UPPER(#{fAccountNumber,jdbcType=VARCHAR}) , '%')
+			</if>
+			<if test="fUserNumber != null and fUserNumber != ''">
+				<!-- AND UPPER(T.F_USER_NUMBER) LIKE '%' || UPPER(#{fUserNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(T.F_USER_NUMBER) LIKE CONCAT('%', UPPER(#{fUserNumber,jdbcType=VARCHAR}) , '%')
+			</if>
+		</where>) 
+		<!--  
+		WHERE RN &gt;=
+		#{startRow,jdbcType=INTEGER}
+		AND RN &lt;=
+		#{endRow,jdbcType=INTEGER}
+		ORDER BY
+		F_ACCOUNT_NUMBER
+		DESC-->
+		t order  by
+		 F_CREATE_TIME desc
+		limit  #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+
+	</select>
+	<select id="countUserBean" resultType="java.lang.Integer">
+		SELECT COUNT(1) FROM T_CCS_USER
+	</select>
+	<select id="countUserBeanByCondition" resultType="java.lang.Integer" parameterType="map">
+		SELECT COUNT(1) FROM T_CCS_USER
+		<where>
+			<if test="fAccountNumber != null and fAccountNumber != ''">
+				<!--  AND UPPER(F_ACCOUNT_NUMBER) LIKE '%' || UPPER(#{fAccountNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(F_ACCOUNT_NUMBER) LIKE CONCAT( '%', UPPER(#{fAccountNumber,jdbcType=VARCHAR}), '%')
+			</if>
+			<if test="fUserNumber != null and fUserNumber != ''">
+				<!--  AND UPPER(F_USER_NUMBER) LIKE '%' || UPPER(#{fUserNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(F_USER_NUMBER) LIKE CONCAT( '%', UPPER(#{fUserNumber,jdbcType=VARCHAR}), '%')
+			</if>
+		</where>
+	</select>
+	<select id="selectUserListByPage" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />  FROM T_CCS_USER T
+		order  by
+		F_CREATE_TIME desc
+	    limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+	</select>
+	
+	<select id="selectAccountByLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />  FROM T_CCS_USER T
+		where T.F_USER_LEVEL=#{fUserLevel,jdbcType=INTEGER}
+	</select>
+	<update id="UpdateRoleByLevel" parameterType="java.lang.Integer">
+		update T_CCS_USER set F_USER_LEVEL=''
+		where F_USER_LEVEL=#{fUserLevel,jdbcType=INTEGER}
+	</update>
+	
+	<select id="findFactoryNoByAccount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT FACTORY FROM T_CCS_USER
+		WHERE F_ACCOUNT_NUMBER = #{accountNumber}
+	</select>
+	
+	<select id="findAuthorityByAccount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		SELECT count(1) FROM T_CCS_USER u left join t_ngc_role r on u.f_user_level=r.id left join t_ngc_menu m on  m.roleid=r.id
+		WHERE F_ACCOUNT_NUMBER = #{accountNumber} and m.authorityID=7
+	</select>
+</mapper>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.UserRoleBeanMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.UserRoleBean" >
+    <id column="F_ACCOUNT_NUMBER" property="fAccountNumber" jdbcType="VARCHAR" />
+    <result column="F_ROLE_CODE" property="fRoleCode" jdbcType="VARCHAR" />
+    <result column="F_CREATE_TIME" property="fCreateTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    F_ACCOUNT_NUMBER, F_ROLE_CODE, F_CREATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_CCS_USER_ROLE
+    where F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_CCS_USER_ROLE
+    where F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.eqy.web.pojo.UserRoleBean" >
+    insert into T_CCS_USER_ROLE (F_ACCOUNT_NUMBER, F_ROLE_CODE, F_CREATE_TIME
+      )
+    values (#{fAccountNumber,jdbcType=VARCHAR}, #{fRoleCode,jdbcType=VARCHAR}, #{fCreateTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.UserRoleBean" >
+    insert into T_CCS_USER_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fAccountNumber != null" >
+        F_ACCOUNT_NUMBER,
+      </if>
+      <if test="fRoleCode != null" >
+        F_ROLE_CODE,
+      </if>
+      <if test="fCreateTime != null" >
+        F_CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fAccountNumber != null" >
+        #{fAccountNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fRoleCode != null" >
+        #{fRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fCreateTime != null" >
+        #{fCreateTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.UserRoleBean" >
+    update T_CCS_USER_ROLE
+    <set >
+      <if test="fRoleCode != null" >
+        F_ROLE_CODE = #{fRoleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fCreateTime != null" >
+        F_CREATE_TIME = #{fCreateTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eqy.web.pojo.UserRoleBean" >
+    update T_CCS_USER_ROLE
+    set F_ROLE_CODE = #{fRoleCode,jdbcType=VARCHAR},
+      F_CREATE_TIME = #{fCreateTime,jdbcType=VARCHAR}
+    where F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+  </update>
+</mapper>

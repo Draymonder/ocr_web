@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TNgcMailMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TNgcMail" >
+    <result column="myEmailAccount" property="myemailaccount" jdbcType="VARCHAR" />
+    <result column="myEmailPassword" property="myemailpassword" jdbcType="VARCHAR" />
+    <result column="myEmailSMTPHost" property="myemailsmtphost" jdbcType="VARCHAR" />
+    <result column="smtpPort" property="smtpport" jdbcType="VARCHAR" />
+  </resultMap>
+ 
+  <sql id="Base_Column_List" >
+    myEmailAccount, myEmailPassword, myEmailSMTPHost, smtpPort
+  </sql>
+ 
+  <insert id="insert" parameterType="com.eqy.web.pojo.TNgcMail" >
+    insert into t_ngc_mail (myEmailAccount, myEmailPassword, 
+      myEmailSMTPHost, smtpPort)
+    values (#{myemailaccount,jdbcType=VARCHAR}, #{myemailpassword,jdbcType=VARCHAR}, 
+      #{myemailsmtphost,jdbcType=VARCHAR}, #{smtpport,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.TNgcMail" >
+    insert into t_ngc_mail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="myemailaccount != null" >
+        myEmailAccount,
+      </if>
+      <if test="myemailpassword != null" >
+        myEmailPassword,
+      </if>
+      <if test="myemailsmtphost != null" >
+        myEmailSMTPHost,
+      </if>
+      <if test="smtpport != null" >
+        smtpPort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="myemailaccount != null" >
+        #{myemailaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="myemailpassword != null" >
+        #{myemailpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="myemailsmtphost != null" >
+        #{myemailsmtphost,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpport != null" >
+        #{smtpport,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <update id="update" parameterType="com.eqy.web.pojo.TNgcMail" >
+    update t_ngc_mail
+    <set >
+      <if test="myemailaccount != null" >
+        myEmailAccount = #{myemailaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="myemailpassword != null" >
+        myEmailPassword = #{myemailpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="myemailsmtphost != null" >
+        myEmailSMTPHost = #{myemailsmtphost,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpport != null" >
+        smtpPort = #{smtpport,jdbcType=VARCHAR},
+      </if>
+    </set>
+    
+  </update>
+  <select id="selectOneByOne"  resultType="com.eqy.web.pojo.TNgcMail" >
+    select <include refid="Base_Column_List" /> 
+    from t_ngc_mail 
+    
+  </select>
+</mapper>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.UserPermissionBeanMapper">
+	<resultMap id="BaseResultMap" type="com.eqy.web.pojo.UserPermissionBean">
+		<result column="F_ACCOUNT_NUMBER" property="fAccountNumber" jdbcType="VARCHAR" />
+		<result column="F_PERMISSION_CODE" property="fPermissionCode" jdbcType="VARCHAR" />
+		<result column="F_MODULE_NAME" property="moduleName" jdbcType="VARCHAR" />
+		<result column="F_CREATE_TIME" property="fCreateTime" jdbcType="VARCHAR" />
+		<result column="F_STATE" property="fState" jdbcType="VARCHAR" />
+		<result column="F_UPDATE_TIME" property="fUpdateTime" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="PermResultMap" type="com.eqy.web.pojo.PermissionBean">
+		<result column="F_PERMISSION_CODE" property="fPermissionCode" jdbcType="VARCHAR" />
+		<result column="F_PERMISSION_NAME" property="fPermissionName" jdbcType="VARCHAR" />
+		<result column="F_CREATE_TIME" property="fCreateTime" jdbcType="VARCHAR" />
+		<result column="F_PERMISSION_GRADE" property="fPermissionGrade" jdbcType="VARCHAR" />
+		<result column="F_PAR_PEN_CODE" property="fParPenCode" jdbcType="VARCHAR" />
+		<result column="F_MODULE_NAME" property="fModuleName" jdbcType="VARCHAR" />
+		<result column="F_ROLE_DEFAULT" property="fRoleDefault" jdbcType="VARCHAR" />
+		<result column="F_STATE" property="fState" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="selectUserPermissionByAccountNum" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		T.F_ACCOUNT_NUMBER, T.F_PERMISSION_CODE, T.F_CREATE_TIME, T.F_STATE,
+		T.F_UPDATE_TIME,T1.F_MODULE_NAME
+		from T_CCS_USER_PERMISSION T left join T_CCS_PERMISSION T1 on
+		T.F_PERMISSION_CODE = T1.F_PERMISSION_CODE
+		where F_ACCOUNT_NUMBER =
+		#{fAccountNumber,jdbcType=VARCHAR} ORDER BY
+		F_CREATE_TIME DESC
+	</select>
+	<insert id="insertUserPermissionList" parameterType="java.util.List" useGeneratedKeys="false">
+		INSERT INTO T_CCS_USER_PERMISSION(
+		F_ACCOUNT_NUMBER,F_PERMISSION_CODE,F_CREATE_TIME,F_STATE
+		)
+		SELECT
+		CC.*
+		FROM(
+		<foreach collection="list" item="item" index="index" separator="union all">
+			SELECT
+			#{item.fAccountNumber,jdbcType=VARCHAR},
+			#{item.fPermissionCode,jdbcType=VARCHAR},
+			#{item.fCreateTime,jdbcType=VARCHAR},
+			#{item.fState,jdbcType=VARCHAR}
+			FROM DUAL
+		</foreach>
+		)CC
+	</insert>
+	<update id="updateUserPermissionList" parameterType="java.util.Map">
+		UPDATE T_CCS_USER_PERMISSION T SET T.F_STATE = '0'
+		WHERE T.F_ACCOUNT_NUMBER =
+		#{fAccountNumber,jdbcType=VARCHAR}
+		AND T.F_PERMISSION_CODE IN 
+		<foreach collection="fPermissionCodeArray" index="index" item="item"
+            open="(" separator="," close=")">
+            #{item,jdbcType=VARCHAR}
+        </foreach>
+	</update>
+	<update id="removeUserPermissionList" parameterType="java.util.Map">
+		UPDATE T_CCS_USER_PERMISSION T SET
+		T.F_STATE = '1'
+		WHERE T.F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+	</update>
+	<!-- 根据账号查询用户权限 -->
+	<select id="selectPermListByAccount" resultMap="PermResultMap" parameterType="java.lang.String">
+		SELECT TP.*,
+		TUP.F_STATE
+		FROM T_CCS_USER_PERMISSION TUP
+		LEFT JOIN T_CCS_PERMISSION TP ON TUP.F_PERMISSION_CODE =
+		TP.F_PERMISSION_CODE
+		WHERE TUP.F_ACCOUNT_NUMBER = 'admin'
+	</select>
+	<delete id="deleteByfAccountNumber" parameterType="java.lang.String">
+	DELETE FROM
+	T_CCS_USER_PERMISSION
+	WHERE F_ACCOUNT_NUMBER = #{fAccountNumber,jdbcType=VARCHAR}
+	</delete>
+</mapper>

@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TNgcDataCommonMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TNgcDataCommon" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="a1" property="a1" jdbcType="VARCHAR" />
+    <result column="a2" property="a2" jdbcType="VARCHAR" />
+    <result column="a3" property="a3" jdbcType="VARCHAR" />
+    <result column="a4" property="a4" jdbcType="VARCHAR" />
+    <result column="a5" property="a5" jdbcType="VARCHAR" />
+    <result column="a6" property="a6" jdbcType="VARCHAR" />
+    <result column="a7" property="a7" jdbcType="VARCHAR" />
+    <result column="a8" property="a8" jdbcType="VARCHAR" />
+    <result column="a9" property="a9" jdbcType="VARCHAR" />
+    <result column="a10" property="a10" jdbcType="VARCHAR" />
+    <result column="a11" property="a11" jdbcType="VARCHAR" />
+    <result column="a12" property="a12" jdbcType="VARCHAR" />
+    <result column="a13" property="a13" jdbcType="VARCHAR" />
+    <result column="a14" property="a14" jdbcType="VARCHAR" />
+    <result column="a15" property="a15" jdbcType="VARCHAR" />
+    <result column="a16" property="a16" jdbcType="VARCHAR" />
+    <result column="a17" property="a17" jdbcType="VARCHAR" />
+    <result column="a18" property="a18" jdbcType="VARCHAR" />
+    <result column="a19" property="a19" jdbcType="VARCHAR" />
+    <result column="a20" property="a20" jdbcType="VARCHAR" />
+    <result column="a21" property="a21" jdbcType="VARCHAR" />
+    <result column="a22" property="a22" jdbcType="VARCHAR" />
+    <result column="a23" property="a23" jdbcType="VARCHAR" />
+    <result column="a24" property="a24" jdbcType="VARCHAR" />
+    <result column="a25" property="a25" jdbcType="VARCHAR" />
+    <result column="a26" property="a26" jdbcType="VARCHAR" />
+    <result column="a27" property="a27" jdbcType="VARCHAR" />
+    <result column="a28" property="a28" jdbcType="VARCHAR" />
+    <result column="a29" property="a29" jdbcType="VARCHAR" />
+    <result column="a30" property="a30" jdbcType="VARCHAR" />
+    <result column="a31" property="a31" jdbcType="VARCHAR" />
+    <result column="a32" property="a32" jdbcType="VARCHAR" />
+    <result column="a33" property="a33" jdbcType="VARCHAR" />
+    <result column="a34" property="a34" jdbcType="VARCHAR" />
+    <result column="a35" property="a35" jdbcType="VARCHAR" />
+    <result column="a36" property="a36" jdbcType="VARCHAR" />
+    <result column="a37" property="a37" jdbcType="VARCHAR" />
+    <result column="a38" property="a38" jdbcType="VARCHAR" />
+    <result column="a39" property="a39" jdbcType="VARCHAR" />
+    <result column="a40" property="a40" jdbcType="VARCHAR" />
+    <result column="a41" property="a41" jdbcType="VARCHAR" />
+    <result column="a42" property="a42" jdbcType="VARCHAR" />
+    <result column="a43" property="a43" jdbcType="VARCHAR" />
+    <result column="a44" property="a44" jdbcType="VARCHAR" />
+    <result column="a45" property="a45" jdbcType="VARCHAR" />
+    <result column="a46" property="a46" jdbcType="VARCHAR" />
+    <result column="a47" property="a47" jdbcType="VARCHAR" />
+    <result column="a48" property="a48" jdbcType="VARCHAR" />
+    <result column="a49" property="a49" jdbcType="VARCHAR" />
+    <result column="a50" property="a50" jdbcType="VARCHAR" />
+    <result column="a51" property="a51" jdbcType="VARCHAR" />
+    <result column="a52" property="a52" jdbcType="VARCHAR" />
+    <result column="a53" property="a53" jdbcType="VARCHAR" />
+    <result column="a54" property="a54" jdbcType="VARCHAR" />
+    <result column="a55" property="a55" jdbcType="VARCHAR" />
+    <result column="a56" property="a56" jdbcType="VARCHAR" />
+    <result column="a57" property="a57" jdbcType="VARCHAR" />
+    <result column="a58" property="a58" jdbcType="VARCHAR" />
+    <result column="a59" property="a59" jdbcType="VARCHAR" />
+    <result column="a60" property="a60" jdbcType="VARCHAR" />
+    <result column="a61" property="a61" jdbcType="VARCHAR" />
+    <result column="a62" property="a62" jdbcType="VARCHAR" />
+    <result column="a63" property="a63" jdbcType="VARCHAR" />
+    <result column="a64" property="a64" jdbcType="VARCHAR" />
+    <result column="a65" property="a65" jdbcType="VARCHAR" />
+    <result column="a66" property="a66" jdbcType="VARCHAR" />
+    <result column="a67" property="a67" jdbcType="VARCHAR" />
+    <result column="a68" property="a68" jdbcType="VARCHAR" />
+    <result column="a69" property="a69" jdbcType="VARCHAR" />
+    <result column="a70" property="a70" jdbcType="VARCHAR" />
+    <result column="a71" property="a71" jdbcType="VARCHAR" />
+    <result column="a72" property="a72" jdbcType="VARCHAR" />
+    <result column="a73" property="a73" jdbcType="VARCHAR" />
+    <result column="a74" property="a74" jdbcType="VARCHAR" />
+    <result column="a75" property="a75" jdbcType="VARCHAR" />
+    <result column="a76" property="a76" jdbcType="VARCHAR" />
+    <result column="a77" property="a77" jdbcType="VARCHAR" />
+    <result column="a78" property="a78" jdbcType="VARCHAR" />
+    <result column="a79" property="a79" jdbcType="VARCHAR" />
+    <result column="a80" property="a80" jdbcType="VARCHAR" />
+    <result column="a81" property="a81" jdbcType="VARCHAR" />
+    <result column="a82" property="a82" jdbcType="VARCHAR" />
+    <result column="a83" property="a83" jdbcType="VARCHAR" />
+    <result column="a84" property="a84" jdbcType="VARCHAR" />
+    <result column="a85" property="a85" jdbcType="VARCHAR" />
+    <result column="a86" property="a86" jdbcType="VARCHAR" />
+    <result column="a87" property="a87" jdbcType="VARCHAR" />
+    <result column="a88" property="a88" jdbcType="VARCHAR" />
+    <result column="a89" property="a89" jdbcType="VARCHAR" />
+    <result column="a90" property="a90" jdbcType="VARCHAR" />
+    <result column="a91" property="a91" jdbcType="VARCHAR" />
+    <result column="a92" property="a92" jdbcType="VARCHAR" />
+    <result column="a93" property="a93" jdbcType="VARCHAR" />
+    <result column="a94" property="a94" jdbcType="VARCHAR" />
+    <result column="a95" property="a95" jdbcType="VARCHAR" />
+    <result column="a96" property="a96" jdbcType="VARCHAR" />
+    <result column="a97" property="a97" jdbcType="VARCHAR" />
+    <result column="a98" property="a98" jdbcType="VARCHAR" />
+    <result column="a99" property="a99" jdbcType="VARCHAR" />
+    <result column="a100" property="a100" jdbcType="VARCHAR" />
+    <result column="a101" property="a101" jdbcType="VARCHAR" />
+    <result column="a102" property="a102" jdbcType="VARCHAR" />
+    <result column="a103" property="a103" jdbcType="VARCHAR" />
+    <result column="a104" property="a104" jdbcType="VARCHAR" />
+    <result column="a105" property="a105" jdbcType="VARCHAR" />
+    <result column="a106" property="a106" jdbcType="VARCHAR" />
+    <result column="a107" property="a107" jdbcType="VARCHAR" />
+    <result column="a108" property="a108" jdbcType="VARCHAR" />
+    <result column="a109" property="a109" jdbcType="VARCHAR" />
+    <result column="a110" property="a110" jdbcType="VARCHAR" />
+    <result column="a111" property="a111" jdbcType="VARCHAR" />
+    <result column="a112" property="a112" jdbcType="VARCHAR" />
+    <result column="a113" property="a113" jdbcType="VARCHAR" />
+    <result column="a114" property="a114" jdbcType="VARCHAR" />
+    <result column="a115" property="a115" jdbcType="VARCHAR" />
+    <result column="a116" property="a116" jdbcType="VARCHAR" />
+    <result column="a117" property="a117" jdbcType="VARCHAR" />
+    <result column="a118" property="a118" jdbcType="VARCHAR" />
+    <result column="a119" property="a119" jdbcType="VARCHAR" />
+    <result column="a120" property="a120" jdbcType="VARCHAR" />
+    <result column="a121" property="a121" jdbcType="VARCHAR" />
+    <result column="a122" property="a122" jdbcType="VARCHAR" />
+    <result column="a123" property="a123" jdbcType="VARCHAR" />
+    <result column="a124" property="a124" jdbcType="VARCHAR" />
+    <result column="a125" property="a125" jdbcType="VARCHAR" />
+    <result column="a126" property="a126" jdbcType="VARCHAR" />
+    <result column="a127" property="a127" jdbcType="VARCHAR" />
+    <result column="a128" property="a128" jdbcType="VARCHAR" />
+    <result column="a129" property="a129" jdbcType="VARCHAR" />
+    <result column="a130" property="a130" jdbcType="VARCHAR" />
+    <result column="a131" property="a131" jdbcType="VARCHAR" />
+    <result column="a132" property="a132" jdbcType="VARCHAR" />
+    <result column="a133" property="a133" jdbcType="VARCHAR" />
+    <result column="a134" property="a134" jdbcType="VARCHAR" />
+    <result column="a135" property="a135" jdbcType="VARCHAR" />
+    <result column="a136" property="a136" jdbcType="VARCHAR" />
+    <result column="a137" property="a137" jdbcType="VARCHAR" />
+    <result column="a138" property="a138" jdbcType="VARCHAR" />
+    <result column="a139" property="a139" jdbcType="VARCHAR" />
+    <result column="a140" property="a140" jdbcType="VARCHAR" />
+    <result column="a141" property="a141" jdbcType="VARCHAR" />
+    <result column="a142" property="a142" jdbcType="VARCHAR" />
+    <result column="a143" property="a143" jdbcType="VARCHAR" />
+    <result column="a144" property="a144" jdbcType="VARCHAR" />
+    <result column="a145" property="a145" jdbcType="VARCHAR" />
+    <result column="a146" property="a146" jdbcType="VARCHAR" />
+    <result column="a147" property="a147" jdbcType="VARCHAR" />
+    <result column="a148" property="a148" jdbcType="VARCHAR" />
+    <result column="a149" property="a149" jdbcType="VARCHAR" />
+    <result column="a150" property="a150" jdbcType="VARCHAR" />
+    <result column="a151" property="a151" jdbcType="VARCHAR" />
+    <result column="a152" property="a152" jdbcType="VARCHAR" />
+    <result column="a153" property="a153" jdbcType="VARCHAR" />
+    <result column="a154" property="a154" jdbcType="VARCHAR" />
+    <result column="a155" property="a155" jdbcType="VARCHAR" />
+    <result column="a156" property="a156" jdbcType="VARCHAR" />
+    <result column="a157" property="a157" jdbcType="VARCHAR" />
+    <result column="a158" property="a158" jdbcType="VARCHAR" />
+    <result column="a159" property="a159" jdbcType="VARCHAR" />
+    <result column="a160" property="a160" jdbcType="VARCHAR" />
+    <result column="a161" property="a161" jdbcType="VARCHAR" />
+    <result column="a162" property="a162" jdbcType="VARCHAR" />
+    <result column="a163" property="a163" jdbcType="VARCHAR" />
+    <result column="a164" property="a164" jdbcType="VARCHAR" />
+    <result column="a165" property="a165" jdbcType="VARCHAR" />
+    <result column="a166" property="a166" jdbcType="VARCHAR" />
+    <result column="a167" property="a167" jdbcType="VARCHAR" />
+    <result column="a168" property="a168" jdbcType="VARCHAR" />
+    <result column="a169" property="a169" jdbcType="VARCHAR" />
+    <result column="a170" property="a170" jdbcType="VARCHAR" />
+    <result column="a171" property="a171" jdbcType="VARCHAR" />
+    <result column="a172" property="a172" jdbcType="VARCHAR" />
+    <result column="a173" property="a173" jdbcType="VARCHAR" />
+    <result column="a174" property="a174" jdbcType="VARCHAR" />
+    <result column="a175" property="a175" jdbcType="VARCHAR" />
+    <result column="a176" property="a176" jdbcType="VARCHAR" />
+    <result column="a177" property="a177" jdbcType="VARCHAR" />
+    <result column="a178" property="a178" jdbcType="VARCHAR" />
+    <result column="a179" property="a179" jdbcType="VARCHAR" />
+    <result column="a180" property="a180" jdbcType="VARCHAR" />
+    <result column="a181" property="a181" jdbcType="VARCHAR" />
+    <result column="a182" property="a182" jdbcType="VARCHAR" />
+    <result column="a183" property="a183" jdbcType="VARCHAR" />
+    <result column="a184" property="a184" jdbcType="VARCHAR" />
+    <result column="a185" property="a185" jdbcType="VARCHAR" />
+    <result column="a186" property="a186" jdbcType="VARCHAR" />
+    <result column="a187" property="a187" jdbcType="VARCHAR" />
+    <result column="a188" property="a188" jdbcType="VARCHAR" />
+    <result column="a189" property="a189" jdbcType="VARCHAR" />
+    <result column="a190" property="a190" jdbcType="VARCHAR" />
+    <result column="a191" property="a191" jdbcType="VARCHAR" />
+    <result column="a192" property="a192" jdbcType="VARCHAR" />
+    <result column="a193" property="a193" jdbcType="VARCHAR" />
+    <result column="a194" property="a194" jdbcType="VARCHAR" />
+    <result column="a195" property="a195" jdbcType="VARCHAR" />
+    <result column="a196" property="a196" jdbcType="VARCHAR" />
+    <result column="a197" property="a197" jdbcType="VARCHAR" />
+    <result column="a198" property="a198" jdbcType="VARCHAR" />
+    <result column="a199" property="a199" jdbcType="VARCHAR" />
+    <result column="a200" property="a200" jdbcType="VARCHAR" />
+    <result column="a201" property="a201" jdbcType="VARCHAR" />
+    <result column="a202" property="a202" jdbcType="VARCHAR" />
+    <result column="a203" property="a203" jdbcType="VARCHAR" />
+    <result column="a204" property="a204" jdbcType="VARCHAR" />
+    <result column="a205" property="a205" jdbcType="VARCHAR" />
+    <result column="a206" property="a206" jdbcType="VARCHAR" />
+    <result column="a207" property="a207" jdbcType="VARCHAR" />
+    <result column="a208" property="a208" jdbcType="VARCHAR" />
+    <result column="a209" property="a209" jdbcType="VARCHAR" />
+    <result column="a210" property="a210" jdbcType="VARCHAR" />
+    <result column="a211" property="a211" jdbcType="VARCHAR" />
+    <result column="a212" property="a212" jdbcType="VARCHAR" />
+    <result column="a213" property="a213" jdbcType="VARCHAR" />
+    <result column="a214" property="a214" jdbcType="VARCHAR" />
+    <result column="a215" property="a215" jdbcType="VARCHAR" />
+    <result column="a216" property="a216" jdbcType="VARCHAR" />
+    <result column="a217" property="a217" jdbcType="VARCHAR" />
+    <result column="a218" property="a218" jdbcType="VARCHAR" />
+    <result column="a219" property="a219" jdbcType="VARCHAR" />
+    <result column="a220" property="a220" jdbcType="VARCHAR" />
+    <result column="a221" property="a221" jdbcType="VARCHAR" />
+    <result column="account_number" property="accountNumber" jdbcType="VARCHAR" />
+    <result column="template_name" property="templateName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="filenumber" property="fileNumber" jdbcType="VARCHAR" />
+    <result column="flag1" property="flag1" jdbcType="INTEGER" />
+    <result column="flag2" property="flag2" jdbcType="INTEGER" />
+    <result column="task_id" property="taskId" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, a16, a17, a18, 
+    a19, a20, a21, a22, a23, a24, a25, a26, a27, a28, a29, a30, a31, a32, a33, a34, a35, 
+    a36, a37, a38, a39, a40, a41, a42, a43, a44, a45, a46, a47, a48, a49, a50, a51, a52, 
+    a53, a54, a55, a56, a57, a58, a59, a60, a61, a62, a63, a64, a65, a66, a67, a68, a69, 
+    a70, a71, a72, a73, a74, a75, a76, a77, a78, a79, a80, a81, a82, a83, a84, a85, a86, 
+    a87, a88, a89, a90, a91, a92, a93, a94, a95, a96, a97, a98, a99, a100, a101, a102, 
+    a103, a104, a105, a106, a107, a108, a109, a110, a111, a112, a113, a114, a115, a116, 
+    a117, a118, a119, a120, a121, a122, a123, a124, a125, a126, a127, a128, a129, a130, 
+    a131, a132, a133, a134, a135, a136, a137, a138, a139, a140, a141, a142, a143, a144, 
+    a145, a146, a147, a148, a149, a150, a151, a152, a153, a154, a155, a156, a157, a158, 
+    a159, a160, a161, a162, a163, a164, a165, a166, a167, a168, a169, a170, a171, a172, 
+    a173, a174, a175, a176, a177, a178, a179, a180, a181, a182, a183, a184, a185, a186, 
+    a187, a188, a189, a190, a191, a192, a193, a194, a195, a196, a197, a198, a199, a200, 
+    a201, a202, a203, a204, a205, a206, a207, a208, a209, a210, a211, a212, a213, a214, 
+    a215, a216, a217, a218, a219, a220, a221, account_number, template_name, create_time, 
+    filenumber,flag1,flag2,task_id
+  </sql>
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_ngc_data_common
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+    <select id="countBean" resultType="java.lang.Integer" parameterType="map"  >  
+    select 
+    count(1)
+    from t_ngc_data_common t left join t_ccs_user u on  u.f_account_number=t.account_number left join t_ngc_factory a on  a.id=u.factory
+    <where>
+       <if test="templateName != null and templateName != '' " >
+       and ( t.template_name  LIKE CONCAT( '%', #{templateName,jdbcType=VARCHAR}, '%')
+       or
+       t.filenumber  LIKE CONCAT( '%', #{templateName,jdbcType=VARCHAR}, '%')
+       )
+      </if>
+      <if test="date != null and date != '' " >
+       and  t.create_time  LIKE CONCAT( '%', #{date,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="FactoryName != null and FactoryName != '' " >
+       and ( a.name   LIKE CONCAT( '%', #{FactoryName,jdbcType=VARCHAR}, '%')
+       or 
+       u.username   LIKE CONCAT( '%', #{FactoryName,jdbcType=VARCHAR}, '%')
+       )
+      </if>
+    </where>
+  </select>
+  
+   <select id="selectTaskListByPage" resultMap="BaseResultMap"  parameterType="map" >  
+    SELECT
+		t.id, t.account_number, t.template_name, 
+        t.create_time, t.filenumber ,t.flag1,t.flag2,t.task_id
+		 from t_ngc_data_common t left join t_ccs_user u on  u.f_account_number=t.account_number left join t_ngc_factory a on  a.id=u.factory
+    <where>
+       <if test="templateName != null and templateName != '' " >
+       and ( t.template_name  LIKE CONCAT( '%', #{templateName,jdbcType=VARCHAR}, '%')
+       or
+       t.filenumber  LIKE CONCAT( '%', #{templateName,jdbcType=VARCHAR}, '%')
+       )
+      </if>
+      <if test="date != null and date != '' " >
+       and  t.create_time  LIKE CONCAT( '%', #{date,jdbcType=VARCHAR}, '%')
+      </if>
+      <if test="FactoryName != null and FactoryName != '' " >
+       and ( a.name   LIKE CONCAT( '%', #{FactoryName,jdbcType=VARCHAR}, '%')
+       or 
+       u.username   LIKE CONCAT( '%', #{FactoryName,jdbcType=VARCHAR}, '%')
+       )
+      </if>
+    </where>
+		 order  by  id desc
+		 limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updateData"  parameterType="map" >  
+    update t_ngc_data_common
+    set ${fieldName}=#{result}
+	where id=#{id}
+   </update>
+   
+   <select id="selectColumnByA"  resultType="java.lang.String"   parameterType="map">
+    select ${fieldName}
+    from t_ngc_data_common where id=#{id,jdbcType=INTEGER}
+   </select> 
+    <update id="updateDataByID"  parameterType="map" >  
+    update t_ngc_data_common
+    set ${fieldName}=#{result}
+	where id=#{id,jdbcType=INTEGER}
+   </update>
+   
+   <update id="updateflag1"  parameterType="map" >  
+    update t_ngc_data_common
+    set flag1=#{flag1}
+	where id=#{id,jdbcType=INTEGER}
+   </update>
+
+   <insert id="insertBasicInfo">
+     INSERT INTO t_ngc_data_common (template_name, create_time, filenumber, account_number, task_id)
+     VALUES (#{templateName}, #{createTime}, #{fileNumber}, #{accountNumber}, #{taskId});
+   </insert>
+
+  <select id="selectIDbyFileNumber" parameterType="java.lang.String" resultType="int">
+    SELECT id FROM t_ngc_data_common
+    WHERE filenumber = #{fileNumber}
+  </select>
+  <select id="updateflag2" parameterType="map">
+    UPDATE t_ngc_data_common
+    SET flag2=#{flag2}
+	WHERE id=#{id,jdbcType=INTEGER}
+  </select>
+  
+   <update id="updateTemplateName"  parameterType="map">
+        update  t_ngc_data_common set template_name=#{templateNameAfter,jdbcType=VARCHAR}
+        where  template_name=#{templateNameBefore,jdbcType=VARCHAR}
+    </update>
+
+  <select id="countFile" parameterType="java.lang.String" resultType="int">
+    SELECT COUNT(*) FROM t_ngc_data_common
+    WHERE filenumber=#{fileNumber};
+  </select>
+
+  <update id="updateCreateTime" parameterType="map">
+        UPDATE t_ngc_data_common set create_time=#{createTime}, task_id=#{taskId}, flag2=#{flag2},account_number = #{accountNumber}, template_name = #{templateName}
+        WHERE filenumber = #{fileNumber}
+    </update>
+  
+</mapper>

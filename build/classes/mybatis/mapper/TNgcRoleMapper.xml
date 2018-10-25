@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.TNgcRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.TNgcRole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_name" property="roleName" jdbcType="VARCHAR" />
+    <result column="role_number" property="roleNumber" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    id, role_name, role_number
+  </sql>
+ 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_ngc_role
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_ngc_role
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+ 
+  <insert id="insert" parameterType="com.eqy.web.pojo.TNgcRole" >
+    insert into t_ngc_role ( role_name, role_number
+      )
+    values ( #{roleName,jdbcType=VARCHAR}, #{roleNumber,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.TNgcRole" >
+    insert into t_ngc_role
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="roleName != null" >
+        role_name,
+      </if>
+      <if test="roleNumber != null" >
+        role_number,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="roleName != null" >
+        #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null" >
+        #{roleNumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.TNgcRole" >
+    update t_ngc_role
+    <set >
+      <if test="roleName != null" >
+        role_name = #{roleName,jdbcType=VARCHAR},
+      </if>
+      <if test="roleNumber != null" >
+        role_number = #{roleNumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eqy.web.pojo.TNgcRole" >
+    update t_ngc_role
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_number = #{roleNumber,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" >  <!-- parameterType="java.lang.Integer"  -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_ngc_role
+    <!--  where id = #{id,jdbcType=INTEGER}-->
+  </select>
+  <select id="selectNamebyID" resultType="string"  parameterType="java.lang.Integer"  >  
+    select 
+    role_name
+    from t_ngc_role
+     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="countRoleBean" resultType="java.lang.Integer"   >  
+    select 
+    count(1)
+    from t_ngc_role
+  </select>
+  <select id="selectRoleListByPage" resultMap="BaseResultMap" parameterType="map">
+		SELECT
+		<include refid="Base_Column_List" />  FROM t_ngc_role
+		 order  by  id
+		 limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}  
+  </select>
+  <select id="selectAllbyID" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />  FROM t_ngc_role 
+		where id= #{id,jdbcType=INTEGER}
+</select>
+
+   <select id="selectCountByID" resultType="java.lang.Integer" parameterType="map">
+		SELECT
+		count(1)  FROM t_ngc_role 
+		<where>
+			<if test="roleName != null and roleName != ''">
+                    AND  role_name= #{roleName,jdbcType=VARCHAR} 
+			</if>
+			<if test="roleNumber != null and roleNumber != ''">
+				
+				    AND  role_Number= #{roleNumber,jdbcType=VARCHAR}
+			</if>
+		</where>
+  </select>
+   
+  	<update id="updateRoleByID" parameterType="com.eqy.web.pojo.TNgcRole">
+		update t_ngc_role 
+		<set>
+			<if test="roleName != null">
+				role_name= #{roleName,jdbcType=VARCHAR},
+			</if>
+			<if test="roleNumber != null">
+				role_Number= #{roleNumber,jdbcType=VARCHAR}
+			</if>
+			
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	
+    <select id="selectCountByNameorNumber" resultType="java.lang.Integer" parameterType="map">
+		SELECT COUNT(1) FROM t_ngc_role 
+		<where>
+			<if test="roleNumber != null and roleNumber != ''">
+				
+				AND UPPER(role_NUMBER) LIKE CONCAT( '%', UPPER(#{roleNumber,jdbcType=VARCHAR}), '%')
+			</if>
+			<if test="roleName != null and roleName != ''">
+				<!--  AND UPPER(F_USER_NUMBER) LIKE '%' || UPPER(#{fUserNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(role_Name) LIKE CONCAT( '%', UPPER(#{roleName,jdbcType=VARCHAR}), '%')
+			</if>
+		</where>
+	</select>
+    <select id="selectRoleByConditionPage" resultMap="BaseResultMap" parameterType="map">
+	
+		SELECT
+		<include refid="Base_Column_List" />
+	
+		
+		FROM t_ngc_role 
+		<where>
+			<if test="roleNumber != null and roleNumber != ''">
+				
+				AND UPPER(role_NUMBER) LIKE CONCAT( '%', UPPER(#{roleNumber,jdbcType=VARCHAR}), '%')
+			</if>
+			<if test="roleName != null and roleName != ''">
+				<!--  AND UPPER(F_USER_NUMBER) LIKE '%' || UPPER(#{fUserNumber,jdbcType=VARCHAR}) || '%'
+				-->
+				AND UPPER(role_Name) LIKE CONCAT( '%', UPPER(#{roleName,jdbcType=VARCHAR}), '%')
+			</if>
+		</where>
+		<!--  
+		WHERE RN &gt;=
+		#{startRow,jdbcType=INTEGER}
+		AND RN &lt;=
+		#{endRow,jdbcType=INTEGER}
+		ORDER BY
+		F_ACCOUNT_NUMBER
+		DESC-->
+		 order  by  id   limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+
+	</select>  
+</mapper>

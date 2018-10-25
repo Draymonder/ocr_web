@@ -1,0 +1,69 @@
+.dataupload1 {
+    width: 100%;
+    background-color: #fff;
+}
+.dataupload_btn1 {
+    background-color: #F5A623;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    margin-top: 0px;
+    position: absolute;
+    left: 17%;
+    margin-left: -130px;
+    z-index: 10;
+    line-height: 40px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+.dataupload_btn1 input{
+	color: #000000;
+	/*display: none;*/
+	width: 100px;
+	height: 40px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	filter:alpha(Opacity=100);-moz-opacity:0;opacity: 0;
+}
+.dataupload_btn_div1 {
+    position: absolute;
+    z-index: 8;
+    bottom: 0;
+    left: 100px;
+    line-height: 20px;
+    color: #40b2fb;
+    font-size: 15px;
+    width: 100%;
+    text-align: left;
+}
+.dataupload_sure1 {
+    background-color: #FA3333;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    margin-top: 10px;
+    position: relative;
+    left: 35%;
+    margin-left: -130px;
+    z-index: 8;
+    line-height: 40px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+}
+.dataupload_sure2 {
+    background-color: #FA3333;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    position: relative;
+    left: 50%;
+    z-index: 8;
+    line-height: 40px;
+    text-align: center;
+    font-size: 10px;
+    cursor: pointer;
+    top:-60px;
+}

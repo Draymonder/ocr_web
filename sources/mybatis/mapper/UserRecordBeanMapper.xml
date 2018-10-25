@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.eqy.web.dao.UserRecordBeanMapper">
+  <resultMap id="BaseResultMap" type="com.eqy.web.pojo.UserRecordBean">
+    <id column="RECORD_ID" jdbcType="VARCHAR" property="recordId" />
+    <result column="F_CARD_NUMBER" jdbcType="VARCHAR" property="fCardNumber" />
+    <result column="F_USER_NUMBER" jdbcType="VARCHAR" property="fUserNumber" />
+    <result column="F_RECEIVE_TIME" jdbcType="VARCHAR" property="fReceiveTime" />
+    <result column="F_USER_TIME" jdbcType="VARCHAR" property="fUserTime" />
+    <result column="F_STATE" jdbcType="VARCHAR" property="fState" />
+    <result column="F_DEFAULT1" jdbcType="VARCHAR" property="fDefault1" />
+    <result column="F_DEFAULT2" jdbcType="VARCHAR" property="fDefault2" />
+    <result column="F_PARENT_NUMBER" jdbcType="VARCHAR" property="fParentNumber" />
+    <result column="PRIZEID" jdbcType="VARCHAR" property="prizeid" />
+    <result column="BATCH" jdbcType="VARCHAR" property="batch" />
+    <result column="ROUND" jdbcType="VARCHAR" property="round" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    RECORD_ID, F_CARD_NUMBER, F_USER_NUMBER, F_RECEIVE_TIME, F_USER_TIME, F_STATE, F_DEFAULT1, 
+    F_DEFAULT2, F_PARENT_NUMBER, PRIZEID, BATCH, ROUND
+  </sql>
+  <select id="selectByCondition" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from T_CCS_USE_RECORD
+    <where>
+      <if test="phoneNumber != null and phoneNumber != ''">
+       AND F_USER_NUMBER = #{phoneNumber,jdbcType=VARCHAR}
+      </if>
+      <if test="receiveTime != null and receiveTime != ''">
+      AND F_RECEIVE_TIME LIKE #{receiveTime,jdbcType=VARCHAR} || '%'
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from T_CCS_USE_RECORD
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.eqy.web.pojo.UserRecordBean">
+    insert into T_CCS_USE_RECORD (RECORD_ID, F_CARD_NUMBER, F_USER_NUMBER, 
+      F_RECEIVE_TIME, F_USER_TIME, F_STATE, 
+      F_DEFAULT1, F_DEFAULT2, F_PARENT_NUMBER, 
+      PRIZEID, BATCH, ROUND
+      )
+    values (#{recordId,jdbcType=VARCHAR}, #{fCardNumber,jdbcType=VARCHAR}, #{fUserNumber,jdbcType=VARCHAR}, 
+      #{fReceiveTime,jdbcType=VARCHAR}, #{fUserTime,jdbcType=VARCHAR}, #{fState,jdbcType=VARCHAR}, 
+      #{fDefault1,jdbcType=VARCHAR}, #{fDefault2,jdbcType=VARCHAR}, #{fParentNumber,jdbcType=VARCHAR}, 
+      #{prizeid,jdbcType=VARCHAR}, #{batch,jdbcType=VARCHAR}, #{round,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.eqy.web.pojo.UserRecordBean">
+    insert into T_CCS_USE_RECORD
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        RECORD_ID,
+      </if>
+      <if test="fCardNumber != null">
+        F_CARD_NUMBER,
+      </if>
+      <if test="fUserNumber != null">
+        F_USER_NUMBER,
+      </if>
+      <if test="fReceiveTime != null">
+        F_RECEIVE_TIME,
+      </if>
+      <if test="fUserTime != null">
+        F_USER_TIME,
+      </if>
+      <if test="fState != null">
+        F_STATE,
+      </if>
+      <if test="fDefault1 != null">
+        F_DEFAULT1,
+      </if>
+      <if test="fDefault2 != null">
+        F_DEFAULT2,
+      </if>
+      <if test="fParentNumber != null">
+        F_PARENT_NUMBER,
+      </if>
+      <if test="prizeid != null">
+        PRIZEID,
+      </if>
+      <if test="batch != null">
+        BATCH,
+      </if>
+      <if test="round != null">
+        ROUND,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordId != null">
+        #{recordId,jdbcType=VARCHAR},
+      </if>
+      <if test="fCardNumber != null">
+        #{fCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fUserNumber != null">
+        #{fUserNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fReceiveTime != null">
+        #{fReceiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fUserTime != null">
+        #{fUserTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fState != null">
+        #{fState,jdbcType=VARCHAR},
+      </if>
+      <if test="fDefault1 != null">
+        #{fDefault1,jdbcType=VARCHAR},
+      </if>
+      <if test="fDefault2 != null">
+        #{fDefault2,jdbcType=VARCHAR},
+      </if>
+      <if test="fParentNumber != null">
+        #{fParentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeid != null">
+        #{prizeid,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="round != null">
+        #{round,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.eqy.web.pojo.UserRecordBean">
+    update T_CCS_USE_RECORD
+    <set>
+      <if test="fCardNumber != null">
+        F_CARD_NUMBER = #{fCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fUserNumber != null">
+        F_USER_NUMBER = #{fUserNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="fReceiveTime != null">
+        F_RECEIVE_TIME = #{fReceiveTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fUserTime != null">
+        F_USER_TIME = #{fUserTime,jdbcType=VARCHAR},
+      </if>
+      <if test="fState != null">
+        F_STATE = #{fState,jdbcType=VARCHAR},
+      </if>
+      <if test="fDefault1 != null">
+        F_DEFAULT1 = #{fDefault1,jdbcType=VARCHAR},
+      </if>
+      <if test="fDefault2 != null">
+        F_DEFAULT2 = #{fDefault2,jdbcType=VARCHAR},
+      </if>
+      <if test="fParentNumber != null">
+        F_PARENT_NUMBER = #{fParentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="prizeid != null">
+        PRIZEID = #{prizeid,jdbcType=VARCHAR},
+      </if>
+      <if test="batch != null">
+        BATCH = #{batch,jdbcType=VARCHAR},
+      </if>
+      <if test="round != null">
+        ROUND = #{round,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.eqy.web.pojo.UserRecordBean">
+    update T_CCS_USE_RECORD
+    set F_CARD_NUMBER = #{fCardNumber,jdbcType=VARCHAR},
+      F_USER_NUMBER = #{fUserNumber,jdbcType=VARCHAR},
+      F_RECEIVE_TIME = #{fReceiveTime,jdbcType=VARCHAR},
+      F_USER_TIME = #{fUserTime,jdbcType=VARCHAR},
+      F_STATE = #{fState,jdbcType=VARCHAR},
+      F_DEFAULT1 = #{fDefault1,jdbcType=VARCHAR},
+      F_DEFAULT2 = #{fDefault2,jdbcType=VARCHAR},
+      F_PARENT_NUMBER = #{fParentNumber,jdbcType=VARCHAR},
+      PRIZEID = #{prizeid,jdbcType=VARCHAR},
+      BATCH = #{batch,jdbcType=VARCHAR},
+      ROUND = #{round,jdbcType=VARCHAR}
+    where RECORD_ID = #{recordId,jdbcType=VARCHAR}
+  </update>
+</mapper>

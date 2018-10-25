@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.eqy.web.dao.FactoryBeanMapper" >
+    <resultMap id="BaseResultMap" type="com.eqy.web.pojo.FactoryBean" >
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="address" property="address" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="findFactoryNameByFactoryNo" parameterType="int" resultType="java.lang.String">
+        SELECT NAME FROM t_ngc_factory
+        WHERE id = #{factoryNumber}
+    </select>
+</mapper>
